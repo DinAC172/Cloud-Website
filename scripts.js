@@ -87,3 +87,14 @@ function toggleWorkingHours(dayId) {
     }
 }
 
+document.getElementById('scroll-left').addEventListener('click', function() {
+    const container = document.getElementById('scroll-container');
+    container.scrollLeft -= 50; // Adjust this value as needed
+});
+
+document.getElementById('scroll-right').addEventListener('click', function() {
+    const container = document.getElementById('scroll-container');
+    container.scrollLeft += 50; // Adjust this value as needed
+});
+
+const mobileBlackBox = document.querySelector('.mobile-black-box');

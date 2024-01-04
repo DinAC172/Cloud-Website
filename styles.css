@@ -1,12 +1,22 @@
 html {
     scroll-behavior: smooth;
+    overflow-x: hidden; 
+}
+
+@media only screen and (max-width: 768px) {
+    html {
+        scroll-behavior: smooth;
+        overflow-x: hidden; 
+    }
 }
 
 body {
-    height: 100%;
+    height: 100vh;
     margin: 0;
     font-family: 'Raleway', sans-serif;
+    background: linear-gradient(45deg, #f3f4f6, #d1d9e6);
 }
+
 
 #navbar {
     position: fixed;
@@ -19,6 +29,12 @@ body {
     padding: 15px 0;
     transition: opacity 0.3s;
     z-index: 1000; 
+}
+
+@media only screen and (max-width: 768px) {
+    #navbar{
+        display: none;
+    }
 }
 
 .hidden {
@@ -144,6 +160,15 @@ picture {
     transition: transform 1.3s ease;
 }
 
+@media only screen and (max-width: 768px) {
+    .logotip {
+        left: 1vh;
+        top: 75px;
+        scale:75%;
+    }
+}
+
+
 .logotip:hover{
     cursor: pointer;
     transform: scale(1.1);
@@ -175,6 +200,12 @@ picture {
     max-width: 70%;
     margin: 0 auto;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.9);
+}
+
+@media only screen and (max-width: 768px) {
+    .hero-text{
+        top: 1033px;
+    }
 }
 
 .content {
@@ -214,11 +245,18 @@ picture {
 
 .gallery {
     display: flex;
-    justify-content: center;
+    flex-wrap: nowrap; 
+    overflow-x: auto; 
+    overflow-y: hidden;
+    justify-content: space-between;
     align-items: center;
-    gap: 4cm;
-    background-color: #f4f4f4; 
-    padding: 20px; 
+    padding-left: 70px;
+    gap: 3cm;
+    background: linear-gradient(45deg, #f3f4f6, #d1d9e6);
+    white-space: nowrap;
+    height: 720px;
+    margin-top: 20px;
+    margin-bottom: 30px;
 }
 
 .gallery img {
@@ -227,23 +265,14 @@ picture {
     border-radius: 10px;
     transition: transform 0.3s ease-in-out;
     transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out; 
+    
 }
 
-.gallery img:hover {
-    transform: scale(1.05) rotate(5deg); 
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
-    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out; 
-}
 
 .background-pattern {
     background: linear-gradient(45deg, #f3f4f6, #d1d9e6);
 }
 
-.content, .gallery {
-    background-color: rgba(255, 255, 255, 0.9); 
-
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
-}
 
 footer {
     background-color: #333;
@@ -345,12 +374,45 @@ footer p {
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease;
     max-width: 300px;
+    position: relative;
 }
 
 .menu-column:hover {
     transform: translateY(-10px);
     box-shadow: 0 15px 25px rgba(0, 0, 0, 0.2);
 }
+
+.menu-column:hover::before {
+    content: "";
+    position: absolute;
+    top: -1px; /* Adjust as needed */
+    right: -1px; /* Adjust as needed */
+    bottom: -1px; /* Adjust as needed */
+    left: -1px; /* Adjust as needed */
+    border: 2px solid transparent;
+    border-radius: 15px;
+    z-index: -1;
+    animation: borderAnimation 5s infinite linear; /* Adjust timing as needed */
+}
+
+@keyframes borderAnimation {
+    0% {
+        border-color: #007BFF;
+    }
+    25% {
+        border-color: #19b0eb;
+    }
+    50% {
+        border-color: #00FF00;
+    }
+    75% {
+        border-color: #FF00FF;
+    }
+    100% {
+        border-color: #007BFF;
+    }
+}
+
 
 h3 {
     border-bottom: 2px solid #007bff;
@@ -497,6 +559,18 @@ input[type="submit"]:hover {
     gap: 20px;
 }
 
+@media only screen and (max-width: 768px) {
+    #contact ul {
+    list-style-type: none;
+    padding: 15;
+    display: block;
+    justify-content: center;
+    /* I want the text to be centered*/
+    text-align:center;
+    gap: 20px;
+    }
+}
+
 #contact ul li {
     font-size: 20px;
     margin-bottom: 15px;
@@ -543,9 +617,25 @@ input[type="submit"]:hover {
     padding-bottom: 10px;
 }
 
+@media only screen and (max-width: 768px){
+    .location-section h2{
+        padding-bottom:0px;
+        margin-bottom: 0px;
+    }
+}
+
 .map-container {
     margin-bottom: 20px;
 }
+@media only screen and (max-width: 768px) {
+    .map-container{
+        scale: 60%;
+        margin-right:40vh;
+        margin-top:-80px;
+        margin-bottom:-80px;
+    }
+}
+
 
 address {
     font-style: normal;
@@ -633,6 +723,13 @@ address a:hover {
     transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
+@media only screen and (max-width: 768px){
+    .section-heading{
+        margin-bottom: 5px;
+        padding-bottom: 0;
+    }
+}
+
 .section-heading:hover{
     transform: translateY(-10px);
 }
@@ -647,4 +744,216 @@ address a:hover {
     height: 3px;
     background-color: #088de6;
     z-index: 1;
+}
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    height: 100%;
+    margin: 0;
+    font-family: 'Raleway', sans-serif;
+}
+
+#navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: #088de6;
+    background-color: rgba(8, 141, 230, 0.65);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.6);
+    padding: 15px 0;
+    transition: opacity 0.3s;
+    z-index: 1000; 
+}
+
+.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+#navbar ul {
+    list-style-type: none;
+    padding: 0;
+    text-align: center;
+    margin: 0;
+    opacity: 1;
+}
+
+#navbar ul li {
+    display: inline-block;
+    margin: 0 20px;
+    transition: transform 0.3s ease;
+}
+#navbar ul li:hover {
+    transform: translateY(-2px);
+}
+
+#navbar ul li a:before {
+    font-weight: 900;
+}
+
+#navbar ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 20px;
+    padding: 15px 20px;
+    align-items: center; 
+    justify-content: center;
+    position: relative;
+    transition: color 0.3s ease;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 1);
+    font-family: 'Raleway', sans-serif;
+    opacity: 1;
+}
+
+#navbar ul li a:before {
+    content: "";
+    position: absolute;
+    top: -1px;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-bottom: 2px solid #19b0ebb7;
+    transform: scaleY(2);
+    opacity: 0;
+    transition: 0.3s;
+}
+
+#navbar ul li a:after {
+    content: "";
+    position: absolute;
+    top: -1px;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #19b0ebb7;
+    transform: scale(0);
+    opacity: 0;
+    transition: 0.3s;
+    z-index: -1;
+}
+
+#navbar ul li a:hover {
+    color: #fff;
+}
+
+#navbar ul li a:hover:before {
+    transform: scaleY(1);
+    opacity: 1;
+}
+
+#navbar ul li a:hover:after {
+    transform: scaleY(1);
+    opacity: 1;
+}
+
+@media (max-width: 768px) {
+    #navbar {
+        padding: 10px 0;
+    }
+
+    #navbar ul li {
+        margin: 0 10px;
+    }
+
+    #navbar ul li a {
+        font-size: 16px;
+    }
+}
+
+::-webkit-scrollbar {
+    width: 6px; /* Width of vertical scrollbar */
+    height: 6px; /* Height of horizontal scrollbar */
+}
+
+::-webkit-scrollbar-thumb {
+    background: #007BFF; /* Blue color for the thumb */
+    border-radius: 3px; /* Slight rounded corners */
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #0056b3; /* Darker blue when hovered */
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1; /* Light grey for the track */
+    border-radius: 3px; /* Slight rounded corners */
+}
+
+::-webkit-scrollbar-track:hover {
+    background: #e0e0e0; /* Slightly darker grey when hovered */
+}
+
+.instagram-media {
+    flex: 0 0 auto;    /* Prevents items from shrinking or growing */
+    width: 75%;        /* Adjusted width for each Instagram post */
+    margin: 0 10px;    /* Gap between each post */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out; /* Prevents items from shrinking or growing */
+    scale: 0.9;
+}
+
+.instagram-media:hover {
+    transform: scale(1.05);
+    
+}
+
+.instagram-media a {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+    scale: 0.1;
+    
+}
+
+.instagram-media img {
+    width: 100%;
+    height: auto;
+    border-radius: 5px 5px 0 0;
+}
+
+.instagram-media p {
+    padding: 10px;
+    font-size: 14px;
+    line-height: 1.6;
+    color: #555;
+    background-color: #f9f9f9;
+    border-radius: 0 0 5px 5px;
+ 
+}
+
+.instagram-media svg {
+    fill: #555;
+    
+}
+
+.gallery {
+    padding-left: 70px;
+    padding-right: 80px;
+    
+}
+
+.gallery:first-child {
+    margin-left: 100px;  
+}
+
+@media only screen and (max-width: 768px) {
+    .gallery{
+        padding-left:30px;
+        padding-right: 30px;
+        margin-top: -45px;
+    }
+    .gallery:first-child{
+        margin-left: 40px; 
+    }
+    .instagram-media{
+        scale:1;
+    }
+    
+}
+
+.gallery:last-child {
+    margin-right: 100px;
 }
